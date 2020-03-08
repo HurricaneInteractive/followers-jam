@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/floor-tile.png" type="Texture" id=1]
 [ext_resource path="res://TileMap.gd" type="Script" id=2]
 [ext_resource path="res://assets/play-area.png" type="Texture" id=3]
 [ext_resource path="res://UIArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Main.gd" type="Script" id=5]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=6]
 
 [sub_resource type="TileSet" id=1]
 0/name = "BaseFloor"
@@ -63,6 +64,13 @@ cell_size = Vector2( 16, 16 )
 format = 1
 script = ExtResource( 2 )
 
+[node name="Player" parent="PlayArea" instance=ExtResource( 6 )]
+
 [node name="UIArea" parent="." instance=ExtResource( 4 )]
 margin_left = 208.0
 margin_right = 320.0
+
+[node name="MemoriseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameplayTimer" type="Timer" parent="."]

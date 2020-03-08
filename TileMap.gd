@@ -16,7 +16,7 @@ func get_start_tile() -> int:
 
 
 func get_end_tile() -> int:
-	return _tileset.find_tile_by_name("End")
+	return _tileset.find_tile_by_name("Start")
 
 
 func place_start(at: Vector2) -> void:
