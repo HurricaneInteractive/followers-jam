@@ -17,6 +17,12 @@ enum Directions {
 	LEFT
 }
 
+func reset():
+	points = []
+	right_count = 0
+	down_count = 0
+	left_count = 0
+
 # Returns a random int value between two points
 func rnd(from: int, to: int) -> int:
 	randomize()
@@ -84,4 +90,5 @@ func generate(path: Line2D) -> Line2D:
 	for idx in len(points):
 		_memory_path.add_point(Globals.get_line_point(points[idx][0], points[idx][1]))
 	
+	reset()
 	return _memory_path
