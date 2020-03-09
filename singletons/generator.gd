@@ -2,14 +2,14 @@ extends Node
 
 var _memory_path
 
-var current_row = Globals.min_y
+var current_row
 var current_column
 var points = []
 
 var right_count = 0
 var down_count = 0
 var left_count = 0
-const max_direction_count = 5
+#const max_direction_count = 5
 
 enum Directions {
 	DOWN,
@@ -29,7 +29,7 @@ func get_starting_position() -> int:
 # Checks if "right" is free
 func can_go_right(column: int) -> bool:
 	# On the right edge
-	if column == Globals.max_x or points.find([column + 1, current_row]) != -1 or right_count >= max_direction_count:
+	if column == Globals.max_x or points.find([column + 1, current_row]) != -1 or right_count >= Globals.max_direction_count:
 		return false
 	
 	return true
@@ -37,7 +37,7 @@ func can_go_right(column: int) -> bool:
 # Checks if "left" is free
 func can_go_left(column: int) -> bool:
 	# On the left edge
-	if column == Globals.min_x or points.find([column - 1, current_row]) != -1 or left_count >= max_direction_count:
+	if column == Globals.min_x or points.find([column - 1, current_row]) != -1 or left_count >= Globals.max_direction_count:
 		return false
 	
 	return true
@@ -58,6 +58,7 @@ func make_direction_decision(column: int) -> String:
 func generate(path: Line2D) -> Line2D:
 	_memory_path = path
 	current_column = get_starting_position()
+	current_row = Globals.min_y
 	points.append([current_column, current_row])
 	
 	while current_row < Globals.max_y:
