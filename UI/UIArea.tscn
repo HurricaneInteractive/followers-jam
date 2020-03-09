@@ -4,25 +4,25 @@
 [ext_resource path="res://fonts/Viga-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://UI/small-grey-text.tres" type="DynamicFont" id=3]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 6
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="StyleBoxLine" id=9]
+[sub_resource type="StyleBoxLine" id=2]
 color = Color( 0.945098, 0.945098, 0.945098, 1 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=3]
 size = 4
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=10]
+[sub_resource type="DynamicFont" id=4]
 size = 32
 use_filter = true
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=11]
+[sub_resource type="DynamicFont" id=5]
 use_filter = true
 font_data = ExtResource( 2 )
 
@@ -53,7 +53,7 @@ __meta__ = {
 [node name="GameTitle" type="Label" parent="UIWrap"]
 margin_right = 106.0
 margin_bottom = 9.0
-custom_fonts/font = SubResource( 6 )
+custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Line Follower"
 align = 1
@@ -72,14 +72,14 @@ autowrap = true
 margin_top = 16.0
 margin_right = 106.0
 margin_bottom = 26.0
-custom_styles/separator = SubResource( 9 )
+custom_styles/separator = SubResource( 2 )
 custom_constants/separation = 10
 
 [node name="ScoreTitle" type="Label" parent="UIWrap"]
 margin_top = 26.0
 margin_right = 106.0
 margin_bottom = 33.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Score"
 align = 1
@@ -89,7 +89,7 @@ uppercase = true
 margin_top = 33.0
 margin_right = 106.0
 margin_bottom = 77.0
-custom_fonts/font = SubResource( 10 )
+custom_fonts/font = SubResource( 4 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0.211765, 0.878431, 0.239216, 1 )
 text = "0"
@@ -99,7 +99,7 @@ align = 1
 margin_top = 77.0
 margin_right = 106.0
 margin_bottom = 84.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "Time left"
 align = 1
@@ -109,7 +109,7 @@ uppercase = true
 margin_top = 84.0
 margin_right = 106.0
 margin_bottom = 107.0
-custom_fonts/font = SubResource( 11 )
+custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_outline_modulate = Color( 0.211765, 0.878431, 0.239216, 1 )
 text = "0"
@@ -124,3 +124,34 @@ custom_colors/font_color = Color( 0.505882, 0.482353, 0.482353, 1 )
 text = "Press 'space' to begin each round"
 align = 1
 autowrap = true
+
+[node name="HSeparator2" type="HSeparator" parent="UIWrap"]
+margin_top = 114.0
+margin_right = 106.0
+margin_bottom = 124.0
+custom_styles/separator = SubResource( 2 )
+custom_constants/separation = 10
+
+[node name="MarginContainer" type="MarginContainer" parent="UIWrap"]
+margin_top = 124.0
+margin_right = 106.0
+margin_bottom = 147.0
+size_flags_horizontal = 3
+
+[node name="HSTitle" type="Label" parent="UIWrap/MarginContainer"]
+margin_top = 8.0
+margin_right = 106.0
+margin_bottom = 15.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "Current High Score"
+uppercase = true
+
+[node name="HS" type="Label" parent="UIWrap/MarginContainer"]
+margin_right = 106.0
+margin_bottom = 23.0
+custom_fonts/font = SubResource( 5 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 0.211765, 0.878431, 0.239216, 1 )
+text = "0"
+align = 2
