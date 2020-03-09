@@ -10,6 +10,7 @@ enum States {
 
 var current_state = States.NEW_LEVEL
 var score: int = 0
+var high_score: int = 0
 
 var medium_threshold = 5
 var hard_threshold = 10
@@ -26,6 +27,7 @@ onready var tilemap = $PlayArea/Tileset
 onready var player = $PlayArea/Player
 onready var score_value = $UIArea/UIWrap/ScoreValue
 onready var outcome = $PlayArea/Outcome
+onready var hight_score_text = $UIArea/UIWrap/MarginContainer/HS
 
 # triggers when state is changed to NEW_LEVEL
 func on_change_to_new_level() -> void:
@@ -81,6 +83,9 @@ func on_change_to_fail() -> void:
 	outcome.get_node("OutcomeText").text = "OOPS!"
 	outcome.visible = true
 	player.can_move = false
+	if score > high_score:
+		high_score = score
+		hight_score_text.text = str(high_score)
 	score = 0
 	Globals.change_difficulty(Globals.Difficulty.EASY)
 	memory_path.visible = true

@@ -48,7 +48,6 @@ use_filter = true
 font_data = ExtResource( 7 )
 
 [node name="Main" type="Node2D"]
-position = Vector2( 0, -0.213608 )
 script = ExtResource( 1 )
 __meta__ = {
 "_edit_group_": true
