@@ -1,0 +1,85 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Main/Main.gd" type="Script" id=1]
+[ext_resource path="res://Tileset/TileMap.gd" type="Script" id=2]
+[ext_resource path="res://Main/play-area.png" type="Texture" id=3]
+[ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Tileset/floor-tile.png" type="Texture" id=5]
+[ext_resource path="res://UI/UIArea.tscn" type="PackedScene" id=6]
+
+[sub_resource type="TileSet" id=1]
+0/name = "BaseFloor"
+0/texture = ExtResource( 5 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 0, 16, 16 )
+0/tile_mode = 0
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shapes = [  ]
+0/z_index = 0
+1/name = "Start"
+1/texture = ExtResource( 5 )
+1/tex_offset = Vector2( 0, 0 )
+1/modulate = Color( 1, 1, 1, 1 )
+1/region = Rect2( 16, 0, 16, 16 )
+1/tile_mode = 0
+1/occluder_offset = Vector2( 0, 0 )
+1/navigation_offset = Vector2( 0, 0 )
+1/shapes = [  ]
+1/z_index = 0
+2/name = "End"
+2/texture = ExtResource( 5 )
+2/tex_offset = Vector2( 0, 0 )
+2/modulate = Color( 1, 1, 1, 1 )
+2/region = Rect2( 32, 0, 16, 16 )
+2/tile_mode = 0
+2/occluder_offset = Vector2( 0, 0 )
+2/navigation_offset = Vector2( 0, 0 )
+2/shapes = [  ]
+2/z_index = 0
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 1 )
+
+[node name="PlayArea" type="Control" parent="."]
+margin_right = 208.0
+margin_bottom = 180.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Grid" type="Sprite" parent="PlayArea"]
+texture = ExtResource( 3 )
+centered = false
+
+[node name="MemoryPath" type="Line2D" parent="PlayArea"]
+width = 1.0
+default_color = Color( 0, 0, 0, 1 )
+joint_mode = 1
+
+[node name="PlayerPath" type="Line2D" parent="PlayArea"]
+width = 1.0
+default_color = Color( 0.984314, 0.419608, 0.419608, 1 )
+joint_mode = 1
+
+[node name="Tileset" type="TileMap" parent="PlayArea"]
+tile_set = SubResource( 1 )
+cell_size = Vector2( 16, 16 )
+format = 1
+script = ExtResource( 2 )
+
+[node name="Player" parent="PlayArea" instance=ExtResource( 4 )]
+
+[node name="UIArea" parent="." instance=ExtResource( 6 )]
+margin_left = 208.0
+margin_right = 320.0
+
+[node name="MemoriseTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="GameplayTimer" type="Timer" parent="."]
+one_shot = true
+[connection signal="position_changed" from="PlayArea/Player" to="." method="_on_Player_position_changed"]
+[connection signal="timeout" from="MemoriseTimer" to="." method="_on_MemoriseTimer_timeout"]
+[connection signal="timeout" from="GameplayTimer" to="." method="_on_GameplayTimer_timeout"]
