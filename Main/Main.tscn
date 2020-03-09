@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Main/Main.gd" type="Script" id=1]
 [ext_resource path="res://Tileset/TileMap.gd" type="Script" id=2]
@@ -6,6 +6,8 @@
 [ext_resource path="res://Player/Player.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Tileset/floor-tile.png" type="Texture" id=5]
 [ext_resource path="res://UI/UIArea.tscn" type="PackedScene" id=6]
+[ext_resource path="res://fonts/Viga-Regular.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://UI/small-grey-text.tres" type="DynamicFont" id=8]
 
 [sub_resource type="TileSet" id=1]
 0/name = "BaseFloor"
@@ -39,8 +41,18 @@
 2/shapes = [  ]
 2/z_index = 0
 
+[sub_resource type="DynamicFont" id=2]
+size = 30
+outline_size = 2
+use_filter = true
+font_data = ExtResource( 7 )
+
 [node name="Main" type="Node2D"]
+position = Vector2( 0, -0.213608 )
 script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="PlayArea" type="Control" parent="."]
 margin_right = 208.0
@@ -70,6 +82,45 @@ format = 1
 script = ExtResource( 2 )
 
 [node name="Player" parent="PlayArea" instance=ExtResource( 4 )]
+
+[node name="Outcome" type="VBoxContainer" parent="PlayArea"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.365585
+margin_top = 0.18277
+margin_right = 0.365585
+margin_bottom = 0.18277
+rect_rotation = 0.139305
+custom_constants/separation = 0
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false,
+"_editor_description_": ""
+}
+
+[node name="OutcomeText" type="Label" parent="PlayArea/Outcome"]
+margin_top = 66.0
+margin_right = 208.0
+margin_bottom = 107.0
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_outline_modulate = Color( 1, 1, 1, 1 )
+text = "OOPS!"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label" type="Label" parent="PlayArea/Outcome"]
+margin_top = 107.0
+margin_right = 208.0
+margin_bottom = 114.0
+custom_fonts/font = ExtResource( 8 )
+custom_colors/font_color = Color( 0.505882, 0.482353, 0.482353, 1 )
+text = "Press 'space' to continue"
+align = 1
+uppercase = true
 
 [node name="UIArea" parent="." instance=ExtResource( 6 )]
 margin_left = 208.0
