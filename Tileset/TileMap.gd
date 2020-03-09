@@ -22,5 +22,10 @@ func get_end_tile() -> int:
 func place_start(at: Vector2) -> void:
 	set_cellv(at, get_start_tile())
 
+
 func place_end(at: Vector2) -> void:
 	set_cellv(at, get_end_tile())
+
+
+func clear_tileset() -> void:
+	self.clear()
