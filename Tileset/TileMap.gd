@@ -12,11 +12,11 @@ func _ready():
 
 
 func get_start_tile() -> int:
-	return _tileset.find_tile_by_name("Start")
+	return _tileset.find_tile_by_name("End")
 
 
 func get_end_tile() -> int:
-	return _tileset.find_tile_by_name("Start")
+	return _tileset.find_tile_by_name("End")
 
 
 func place_start(at: Vector2) -> void:
